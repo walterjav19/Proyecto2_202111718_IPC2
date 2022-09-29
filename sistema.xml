@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<listaEmpresas>
+    <empresa id="$codigoEmpresa">
+        <nombre> $nombreEmpresa </nombre>
+        <abreviatura> $abreviatura </abreviatura>
+        <listaPuntosAtencion>
+            <puntoAtencion id="$codigoPunto">
+                <nombre> $nombrePuntoServicio </nombre>
+                <direccion> $direccionPuntoServicio </direccion>
+                <listaEscritorios>
+                    <escritorio id="$codigoEscritorio">
+                        <identificacion> $identificacionEscritorio </identificacion>
+                        <encargado> $nombreEncargado </encargado>
+                    </escritorio>
+                </listaEscritorios>
+            </puntoAtencion>
+        </listaPuntosAtencion>
+        <listaTransacciones>
+            <transaccion id="$codigoTransaccion">
+                <nombre> $nombreTransaccion </nombre>
+                <tiempoAtencion> minutosAtencion </tiempoAtencion>
+            </transaccion>
+        </listaTransacciones>
+    </empresa>
+    <empresa id="$codigoEmpresa2">
+        <nombre> $nombreEmpresa2 </nombre>
+        <abreviatura> $abreviatura2 </abreviatura>
+        <listaPuntosAtencion>
+            <puntoAtencion id="$codigoPunto2">
+                <nombre> $nombrePuntoServicio2 </nombre>
+                <direccion> $direccionPuntoServicio2 </direccion>
+                <listaEscritorios>
+                    <escritorio id="$codigoEscritorio2">
+                        <identificacion> $identificacionEscritorio2 </identificacion>
+                        <encargado> $nombreEncargado2 </encargado>
+                    </escritorio>
+                    <escritorio id="$codigoEscritorio3">
+                        <identificacion> $identificacionEscritorio3 </identificacion>
+                        <encargado> $nombreEncargado3 </encargado>
+                    </escritorio>                    
+                </listaEscritorios>
+            </puntoAtencion>
+        </listaPuntosAtencion>
+        <listaTransacciones>
+            <transaccion id="$codigoTransaccion2">
+                <nombre> $nombreTransaccion2 </nombre>
+                <tiempoAtencion> minutosAtencion2 </tiempoAtencion>
+            </transaccion>
+        </listaTransacciones>
+    </empresa>    
+</listaEmpresas>
