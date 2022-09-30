@@ -1,5 +1,8 @@
+from escritorios import Escritorio
 from leer import leer, lista_empresas
+from lista_doble import doubleList
 opcion=0
+lista_doble_escritorios=doubleList()
 def menu():
     global opcion
     print("===MENU DE INICIO===")
@@ -11,7 +14,7 @@ def menu():
     if int(opcion)==1:
         menu_empresa()
     elif int(opcion)==2:
-        pass
+        opcion_2()
     elif int(opcion)==3:
         manejo_puntos_atencion()
     elif int(opcion)==4:
@@ -37,6 +40,30 @@ def menu_empresa():
     elif op==2:
         path=input("Coloque la Ruta del XML: ")
         leer.leer_xml_empresas(path)
+    elif op==3:
+        pass
+
+
+
+def opcion_2():
+    lista_empresas.imprimir_lista_empresas()
+    print("")
+    empresa=int(input("Elegir empresa: "))
+    puntos_atencion=lista_empresas.obtener_nodo(empresa)
+    for elem in puntos_atencion.puntos_atencion:
+            id_punto=elem.attrib['id']
+            for subelem in elem:
+                if subelem.tag=="nombre":
+                    nombre_punto=subelem.text
+                elif subelem.tag=="direccion":
+                    direccion=subelem.text
+                elif subelem.tag=="listaEscritorios":
+                    lista_escritorios=subelem
+            print("==========Puntos de Atencion==========")        
+            print("id: "+id_punto)
+            print("nombre:"+nombre_punto)
+            print("direccion:"+direccion)
+            print("")
 
 def manejo_puntos_atencion():
     print("")
