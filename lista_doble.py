@@ -24,6 +24,19 @@ class doubleList:
         apuntador.siguiente = nuevoNodo
         nuevoNodo.anterior = apuntador
 
+
+    
+    def recorrer_id_empresa(self, iden):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            while apuntador is not None:
+                if apuntador.elemento.id==iden:
+                    return apuntador.elemento
+                apuntador = apuntador.siguiente
+
     def imprimir_lista(self):
         if self.root is None:
             print("La lista esta vacia")
@@ -31,7 +44,7 @@ class doubleList:
         else:
             apuntador = self.root
             while apuntador is not None:
-                print(apuntador.elemento.nombre, "→")
+                print(apuntador.elemento, "→")
                 apuntador = apuntador.siguiente
 
     def imprimir_lista_empresas(self):
@@ -41,7 +54,7 @@ class doubleList:
         else:
             apuntador = self.root
             while apuntador is not None:
-                print(apuntador.elemento.empresa_toString())
+                apuntador.elemento.empresa_toString()
                 apuntador = apuntador.siguiente
 
     def eliminar_inicio(self):
