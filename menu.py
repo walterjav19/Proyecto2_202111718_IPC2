@@ -44,7 +44,7 @@ def menu_empresa():
         pass
 
 
-
+#varias cosas
 def opcion_2():
     lista_empresas.imprimir_lista_empresas()
     print("")
