@@ -1,3 +1,4 @@
+#varias cosas
 class Escritorio:
     activo=False
     def __init__(self,id,identificacion,encargado):

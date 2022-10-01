@@ -118,3 +118,4 @@ class doubleList:
             if i==id:
                 return apunt.elemento
             apunt=apunt.siguiente    
+            #varias cosas

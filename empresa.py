@@ -1,6 +1,6 @@
 from escritorios import Escritorio
 from lista_doble import doubleList
-
+#varias cosas
 
 class Empresa:
     lista_escritorios=None

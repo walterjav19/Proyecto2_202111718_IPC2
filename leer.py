@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 from cliente import Cliente
-
+#varias cosas
 from empresa import Empresa
 from lista_doble import doubleList
 lista_empresas=doubleList()
