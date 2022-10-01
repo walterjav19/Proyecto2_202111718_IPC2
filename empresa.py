@@ -25,15 +25,16 @@ class Empresa:
                 if subelem.tag=="listaEscritorios":
                     escritorios=subelem
 
-        for escritorio in escritorios:
-            id_escri=escritorio.attrib['id']
-            for subelem in escritorio:
-                if subelem.tag=="identificacion":
-                    iden=subelem.text
-                elif subelem.tag=="encargado":
-                    encar=subelem.text
-            obj_esc=Escritorio(id_escri,iden,encar)
-            list_escritorio.append(obj_esc)       
+            for escritorio in escritorios:
+                id_escri=escritorio.attrib['id']
+                for subelem in escritorio:
+                    if subelem.tag=="identificacion":
+                        iden=subelem.text
+                    elif subelem.tag=="encargado":
+                        encar=subelem.text
+                obj_esc=Escritorio(id_escri,iden,encar)
+                list_escritorio.append(obj_esc)  
+
         self.lista_escritorios=list_escritorio
 
     def get_id(self):

@@ -25,6 +25,17 @@ class doubleList:
         nuevoNodo.anterior = apuntador
 
 
+    def recorrer_id_escritorio(self, iden):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            while apuntador is not None:
+                if apuntador.elemento.id==iden:
+                    return apuntador.elemento   
+                apuntador = apuntador.siguiente
+
     
     def recorrer_id_empresa(self, iden):
         if self.root is None:

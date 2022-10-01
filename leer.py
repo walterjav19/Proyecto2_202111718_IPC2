@@ -47,8 +47,17 @@ class leer:
                         clientes=subelem
             
             emp=lista_empresas.recorrer_id_empresa(id_empresa)
-            print(emp.abreviatura)
-
+            escritorios_desactivados=emp.lista_escritorios
+            pts_atencion=emp.puntos_atencion
+            for pt_atencion in pts_atencion:
+                if pt_atencion.attrib['id']==id_punto:
+                    for escritorio_activo in escritorios_activos:
+                        a=escritorio_activo.attrib['idEscritorio']
+                        b=escritorios_desactivados.recorrer_id_escritorio(a)
+                        if b is not None:
+                            b.set_activo()
+                            
+                    
 
 
 

@@ -2,7 +2,8 @@
     <listadoInicial>
         <configInicial id="$codigoConfiguracion" idEmpresa="$codigoEmpresa" idPunto="$codigoPunto">
             <escritoriosActivos>
-                <escritorio idEscritorio="$codEscritorio"/>
+                <escritorio idEscritorio="$codigoEscritorio"/>
+                <escritorio idEscritorio="$codigoEscritorio_majadas"/>
             </escritoriosActivos>
             <listadoClientes>
                 <cliente dpi="$DPI">

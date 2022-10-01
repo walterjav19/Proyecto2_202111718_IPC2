@@ -14,6 +14,16 @@
                     </escritorio>
                 </listaEscritorios>
             </puntoAtencion>
+                <puntoAtencion id="$codigoPunto_Majadas">
+                <nombre> Majadas </nombre>
+                <direccion> ZONA 1 DE MIXCO </direccion>
+                <listaEscritorios>
+                    <escritorio id="$codigoEscritorio_majadas">
+                        <identificacion> $identificacionEscritorio_majadas </identificacion>
+                        <encargado> $nombreEncargado_majadas </encargado>
+                    </escritorio>
+                </listaEscritorios>
+            </puntoAtencion>
         </listaPuntosAtencion>
         <listaTransacciones>
             <transaccion id="$codigoTransaccion">

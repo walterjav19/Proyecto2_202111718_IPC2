@@ -8,6 +8,17 @@ class Escritorio:
     def get_activo(self):
         return self.activo
 
-    def set_activo(self,activo):
-        self.activo=activo 
+    def set_activo(self):
+        self.activo=True
+     
+    def set_desactivar(self):
+        self.activo=False 
+
+    def escritorios_to_String(self):
+        a=""
+        if self.activo==True:
+            a="SI"
+        else:
+            a="NO"    
+        return f"Id: {self.id}\nIdentificacion{self.identificacion}\nEncargado{self.encargado}\nActivo: {a}"    
 
