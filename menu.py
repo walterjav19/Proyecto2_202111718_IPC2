@@ -51,6 +51,8 @@ def menu_empresa():
     elif op==4:
         path=input("Cargue la ruta del XML: ")
         leer.leer_xml_config(path)
+    else:
+        print("Ingrese un numero entre [1-4]")    
 
 def crear_empresa():
     lista_objetos_puntos=doubleList()
@@ -107,18 +109,53 @@ def opcion_2():
         list_puntos=emp.lista_atencion
         pto=int(input("Elegir Punto: "))
         pto_obj=list_puntos.obtener_nodo(pto)
+        print("\nPunto a estudiar elegido correctamente\n")
 
 
 
 def manejo_puntos_atencion():
-    print("")
-    print("===MENU DE PUNTOS DE ATENCION===")
-    print("1. Ver Estado del punto")
-    print("2. Activar Escritorio")
-    print("3. Desactivar escritorio")
-    print("4. Atender Cliente")
-    print("5. Solicitud de Atencion")
-    print("")
+    global pto_obj
+    n=0
+    while n !=6:
+        print("")
+        print("===MENU DE PUNTOS DE ATENCION===")
+        print("1. Ver Estado del punto")
+        print("2. Activar Escritorio")
+        print("3. Desactivar escritorio")
+        print("4. Atender Cliente")
+        print("5. Solicitud de Atencion")
+        print("6. Regresar Menu principal")
+        print("")
+        n=int(input("Ingrese la opcion: "))
+        if n==1:
+            pass
+        elif n==2:
+            lista_escri=pto_obj.lista_objetos_escritorios
+            lista_escri.imprimir_lista_escritorios()
+            acti=int(input("\nCual escritorio quiere activar: "))
+            nodo=lista_escri.obtener_nodo(acti)
+            nodo.set_activo()
+            print("\nActivado Correctamente")
+        elif n==3:
+            lista_escri=pto_obj.lista_objetos_escritorios
+            lista_escri.imprimir_lista_escritorios()
+            desacti=int(input("\nCual escritorio quiere desactivar: "))   
+            nodo=lista_escri.obtener_nodo(desacti)
+            nodo.set_desactivar()
+            print("\nDesactivado Correctamente")    
+        elif n==4:
+            pass
+        elif n==5:
+            pass
+        elif n==6:
+            print("Regresando al menu de inicio....\n")
+        else:
+            print("\nelija opcion entre 1-6")
+
+
+
+
+
 
 while int(opcion) !=4 :
     menu()
