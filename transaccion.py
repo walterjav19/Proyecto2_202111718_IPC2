@@ -3,4 +3,6 @@ class Transaccion:
         self.id=id
         self.nombre=nombre
         self.tiempo=tiempo
-        #varias cosas
+       
+    def to_String(self):
+        return f"=======Transaccion=======\nId: {self.id}\nNombre: {self.nombre}\nTiempo atencion: {self.tiempo}\n"       

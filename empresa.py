@@ -1,9 +1,11 @@
-from escritorios import Escritorio
 from lista_doble import doubleList
+from punto_atencion import Punto_Atencion
+from transaccion import Transaccion
 #varias cosas
 
 class Empresa:
-    lista_escritorios=None
+    lista_atencion=None
+    lista_transacciones=None
     def __init__(self,id,nombre,abreviatura,puntos_atencion,transacciones):
         self.id=id
         self.nombre=nombre
@@ -11,31 +13,51 @@ class Empresa:
         self.puntos_atencion=puntos_atencion
         self.transacciones=transacciones
 
+
+    def set_lista_atencion(self,lista):
+        self.lista_atencion=lista
+
+    def set_lista_transacciones(self,lista):
+        self.lista_transacciones=lista
+
+
     def empresa_toString(self):
-        print("")
-        print("==========Empresa==========")
-        print("id: "+self.id)
-        print("Nombre: "+self.nombre)
-        print("Abreviatura: "+self.abreviatura)
+        return f"\n==========Empresa==========\nid: {self.id}\nNombre: {self.nombre}\nAbreviatura: {self.abreviatura}"
 
-    def iniciar_escritorios(self):
-        list_escritorio=doubleList()
+    def iniciar_puntos_atencion(self):
+        list_Atencion=doubleList()
         for punto in self.puntos_atencion:
+            id_punto=punto.attrib['id']
             for subelem in punto:
-                if subelem.tag=="listaEscritorios":
-                    escritorios=subelem
+                if subelem.tag=="nombre":
+                    nombre_punto=subelem.text
+                elif subelem.tag=="direccion":
+                    direccion=subelem.text
+                elif subelem.tag=="listaEscritorios":
+                    lista_escritorios=subelem         
+            pto_aten=Punto_Atencion(id_punto,nombre_punto,direccion,lista_escritorios)
+            pto_aten.iniciar_escritorios()
+            list_Atencion.append(pto_aten)
+            self.lista_atencion=list_Atencion
+                    
+        self.lista_atencion=list_Atencion
 
-            for escritorio in escritorios:
-                id_escri=escritorio.attrib['id']
-                for subelem in escritorio:
-                    if subelem.tag=="identificacion":
-                        iden=subelem.text
-                    elif subelem.tag=="encargado":
-                        encar=subelem.text
-                obj_esc=Escritorio(id_escri,iden,encar)
-                list_escritorio.append(obj_esc)  
+    def iniciar_transacciones(self):
+        list_transa=doubleList()
+        for transaccion in self.transacciones:
+            id_tran=transaccion.attrib['id']
+            for subelem in transaccion:
+                if subelem.tag=="nombre":
+                    nom=subelem.text
+                elif subelem.tag=="tiempoAtencion":
+                    t_aten=subelem.text
+            obj_transaccion=Transaccion(id_tran,nom,t_aten)            
+            list_transa.append(obj_transaccion)
+        self.lista_transacciones=list_transa    
 
-        self.lista_escritorios=list_escritorio
+
+
+
 
     def get_id(self):
         return self.id  

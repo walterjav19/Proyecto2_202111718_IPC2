@@ -36,8 +36,59 @@ class doubleList:
                     return apuntador.elemento   
                 apuntador = apuntador.siguiente
 
-    
-    def recorrer_id_empresa(self, iden):
+
+    def contar_escritorios_activos(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            i=0
+            apuntador = self.root
+            while apuntador is not None:
+                if apuntador.elemento.activo==True:
+                    i+=1
+                    return i   
+                apuntador = apuntador.siguiente
+
+
+
+    def contar_escritorios_inactivos(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            i=0
+            apuntador = self.root
+            while apuntador is not None:
+                if apuntador.elemento.activo==False:
+                    i+=1
+                    return i   
+                apuntador = apuntador.siguiente
+
+    def obtener_empresa(self, iden):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            while apuntador is not None:
+                if apuntador.elemento.id==iden:
+                    return apuntador.elemento
+                apuntador = apuntador.siguiente
+
+    def obtener_punto(self, iden):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            while apuntador is not None:
+                if apuntador.elemento.id_punto==iden:
+                    return apuntador.elemento
+                apuntador = apuntador.siguiente
+
+
+    def obtener_escritorio(self, iden):
         if self.root is None:
             print("La lista esta vacia")
             return
@@ -60,13 +111,47 @@ class doubleList:
 
     def imprimir_lista_empresas(self):
         if self.root is None:
+            print("No hay empresas cargadas")
+            return
+        else:
+            apuntador = self.root
+            while apuntador is not None:
+                print(apuntador.elemento.empresa_toString())
+                apuntador = apuntador.siguiente
+
+    def imprimir_lista_puntos(self):
+        if self.root is None:
             print("La lista esta vacia")
             return
         else:
             apuntador = self.root
             while apuntador is not None:
-                apuntador.elemento.empresa_toString()
+                print(apuntador.elemento.toString())
                 apuntador = apuntador.siguiente
+
+    def imprimir_lista_transacciones(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            while apuntador is not None:
+                print(apuntador.elemento.to_String())
+                apuntador = apuntador.siguiente
+
+    def imprimir_lista_escritorios(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            while apuntador is not None:
+                print(apuntador.elemento.escritorios_to_String())
+                apuntador = apuntador.siguiente
+
+
+
+
 
     def eliminar_inicio(self):
         if self.root is None:

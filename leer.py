@@ -22,7 +22,8 @@ class leer:
                     elif subelem.tag=="listaTransacciones":
                         transac=subelem                                                      
                 empresa=Empresa(id,nombre,abreviatura,atencion,transac)
-                empresa.iniciar_escritorios()        
+                empresa.iniciar_puntos_atencion()
+                empresa.iniciar_transacciones()        
                 lista_empresas.append(empresa)
 
 
@@ -45,21 +46,26 @@ class leer:
                         escritorios_activos=subelem
                     elif subelem.tag=="listadoClientes":
                         clientes=subelem
+            if lista_empresas.obtener_empresa(id_empresa)!=None: 
+                emp=lista_empresas.obtener_empresa(id_empresa)
+                puntos=emp.lista_atencion
+                if puntos.obtener_punto(id_punto)!=None:
+                    pto_atencion=puntos.obtener_punto(id_punto)
+                    lista_escri=pto_atencion.lista_objetos_escritorios
+                    for esc in escritorios_activos:
+                        codes=esc.attrib['idEscritorio']
+                        if lista_escri.obtener_escritorio(codes)!=None:
+                            escritorito=lista_escri.obtener_escritorio(codes)
+                            escritorito.set_activo()
+    
+                        else:
+                            print("Escitorio no existe")     
+                else:
+                    print("Id de Punto de atencion no existe")                 
+            else:
+                print("Id de Empresa no existe")     
+   
             
-            emp=lista_empresas.recorrer_id_empresa(id_empresa)
-            escritorios_desactivados=emp.lista_escritorios
-            pts_atencion=emp.puntos_atencion
-            for pt_atencion in pts_atencion:
-                if pt_atencion.attrib['id']==id_punto:
-                    for escritorio_activo in escritorios_activos:
-                        a=escritorio_activo.attrib['idEscritorio']
-                        b=escritorios_desactivados.recorrer_id_escritorio(a)
-                        if b is not None:
-                            b.set_activo()
-                            
-                    
-
-
 
             #iniciamos clientes
             for cliente in clientes:
