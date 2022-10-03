@@ -21,5 +21,5 @@ class Escritorio:
             a="SI"
         else:
             a="NO"    
-        return f"\n======Escritorio======\nId: {self.id}\nIdentificacion{self.identificacion}\nEncargado: {self.encargado}\nActivo: {a}"    
+        return f"\n======Escritorio======\nId: {self.id}\nIdentificacion: {self.identificacion}\nEncargado: {self.encargado}\nActivo: {a}"    
 

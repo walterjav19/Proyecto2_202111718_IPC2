@@ -8,8 +8,8 @@
                 <cliente dpi="$DPI">
                     <nombre> $nombreCliente </nombre>
                 <listadoTransacciones>
-                    <transaccion idTransaccion="$codTrans" cantidad="cantTrans"/>
-                    <transaccion idTransaccion="$codTrans" cantidad="cantTrans"/>
+                    <transaccion idTransaccion="$codigoTransaccion" cantidad="cantTrans"/>
+                    <transaccion idTransaccion="$codigoTransaccion" cantidad="cantTrans"/>
                 </listadoTransacciones>
                 </cliente>
             </listadoClientes>

@@ -76,6 +76,19 @@ class doubleList:
                     return apuntador.elemento
                 apuntador = apuntador.siguiente
 
+    def obtener_transaccion(self, iden):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            while apuntador is not None:
+                if apuntador.elemento.id==iden:
+                    return apuntador.elemento
+                apuntador = apuntador.siguiente
+
+
+
     def obtener_punto(self, iden):
         if self.root is None:
             print("La lista esta vacia")
@@ -109,6 +122,18 @@ class doubleList:
                 print(apuntador.elemento, "→")
                 apuntador = apuntador.siguiente
 
+    def sumar_tiempos_atencion(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            i=0
+            apuntador = self.root
+            while apuntador is not None:
+                i+=apuntador.elemento.tiempo_atencion
+                apuntador = apuntador.siguiente
+            return i
+
     def imprimir_lista_empresas(self):
         if self.root is None:
             print("No hay empresas cargadas")
@@ -118,6 +143,17 @@ class doubleList:
             while apuntador is not None:
                 print(apuntador.elemento.empresa_toString())
                 apuntador = apuntador.siguiente
+
+
+    def imprimir_lista_clientes(self):
+        if self.root is None:
+            print("No hay clientes cargados")
+            return
+        else:
+            apuntador = self.root
+            while apuntador is not None:
+                print(apuntador.elemento.toString())
+                apuntador = apuntador.siguiente            
 
     def imprimir_lista_puntos(self):
         if self.root is None:
@@ -194,6 +230,26 @@ class doubleList:
             apuntador = apuntador.siguiente
         return cuenta
 
+
+    def contar_escritorios_activos(self):
+        apuntador = self.root
+        cuenta = 0
+
+        while apuntador is not None:
+            if apuntador.elemento.activo==True:
+                cuenta = cuenta + 1
+            apuntador = apuntador.siguiente
+        return cuenta
+
+    def contar_escritorios_desactivados(self):
+        apuntador = self.root
+        cuenta = 0
+
+        while apuntador is not None:
+            if apuntador.elemento.activo==False:
+                cuenta = cuenta + 1
+            apuntador = apuntador.siguiente
+        return cuenta
 
     def obtener_nodo(self,id):
         i=0

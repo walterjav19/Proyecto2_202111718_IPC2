@@ -1,3 +1,4 @@
+from cliente import Cliente
 from empresa import Empresa
 from escritorios import Escritorio
 from leer import leer, lista_empresas,lista_clientes
@@ -7,6 +8,7 @@ from transaccion import Transaccion
 opcion=0
 lista_doble_escritorios=doubleList()
 pto_obj=None
+emp=None
 def menu():
     global opcion
     print("===MENU DE INICIO===")
@@ -97,7 +99,7 @@ def crear_empresa():
 
 
 def opcion_2():
-    global pto_obj
+    global pto_obj,emp
     if lista_empresas.lista_vacia()==True:
         print("no hay empresas en el sistema aun")
     else:    
@@ -116,7 +118,7 @@ def opcion_2():
 def manejo_puntos_atencion():
     global pto_obj
     n=0
-    while n !=6:
+    while n !=7:
         print("")
         print("===MENU DE PUNTOS DE ATENCION===")
         print("1. Ver Estado del punto")
@@ -124,31 +126,65 @@ def manejo_puntos_atencion():
         print("3. Desactivar escritorio")
         print("4. Atender Cliente")
         print("5. Solicitud de Atencion")
-        print("6. Regresar Menu principal")
+        print("6. Simular actividad del punto de atención")
+        print("7. Regresar Menu principal")
         print("")
         n=int(input("Ingrese la opcion: "))
         if n==1:
-            pass
+            if pto_obj!=None:
+                lista_escri=pto_obj.lista_objetos_escritorios
+                print("======Estado del punto de Atencion======")
+                print("Escritorios Activos: "+str(lista_escri.contar_escritorios_activos()))
+                print("Escritorios Inactivos: "+str(lista_escri.contar_escritorios_desactivados()))
+                print("Clientes en Espera: "+str(lista_clientes.contar_elementos()))
+            else:
+                print("\nAun no se ha elegido un punto de atencion")    
         elif n==2:
-            lista_escri=pto_obj.lista_objetos_escritorios
-            lista_escri.imprimir_lista_escritorios()
-            acti=int(input("\nCual escritorio quiere activar: "))
-            nodo=lista_escri.obtener_nodo(acti)
-            nodo.set_activo()
-            print("\nActivado Correctamente")
+            if pto_obj!=None:
+                lista_escri=pto_obj.lista_objetos_escritorios
+                lista_escri.imprimir_lista_escritorios()
+                acti=int(input("\nCual escritorio quiere activar: "))
+                nodo=lista_escri.obtener_nodo(acti)
+                nodo.set_activo()
+                print("\nActivado Correctamente")
+            else:
+                print("\nAun no se ha elegido un punto de atencion")
         elif n==3:
-            lista_escri=pto_obj.lista_objetos_escritorios
-            lista_escri.imprimir_lista_escritorios()
-            desacti=int(input("\nCual escritorio quiere desactivar: "))   
-            nodo=lista_escri.obtener_nodo(desacti)
-            nodo.set_desactivar()
-            print("\nDesactivado Correctamente")    
+            if pto_obj !=None:
+                lista_escri=pto_obj.lista_objetos_escritorios
+                lista_escri.imprimir_lista_escritorios()
+                desacti=int(input("\nCual escritorio quiere desactivar: "))   
+                nodo=lista_escri.obtener_nodo(desacti)
+                nodo.set_desactivar()
+                print("\nDesactivado Correctamente")
+            else:
+                print("\nAun no se ha elegido un punto de atencion")        
         elif n==4:
             pass
         elif n==5:
-            pass
+            list_tran=emp.lista_transacciones
+            t_t=0
+            dpi=input("Ingrese el dpi del Cliente: ")
+            nombre=input("Ingrese el nombre: ")
+            n_tran=int(input("Cuantas Transacciones realizara: "))
+            i=0
+            while i!=n_tran:
+                id_tran=input("Ingrese Id de la operacion: ")
+                if list_tran.obtener_transaccion(id_tran)!=None:
+                    objeto_t=list_tran.obtener_transaccion(id_tran)
+                    t_t+=int(objeto_t.tiempo)
+                    i+=1
+                    print("\nTransaccion Agregada\n")
+                else:
+                    print("\nEsta empresa no reconoce el id de esta transaccion\n") 
+            nuevo_cliente=Cliente(dpi,nombre,None,t_t)
+            lista_clientes.append(nuevo_cliente)
+            #lista_clientes.imprimir_lista_clientes()
+            print("\nTiempo promedio de espera: "+str(lista_clientes.sumar_tiempos_atencion()/lista_clientes.contar_elementos())+" Minutos\n")  
         elif n==6:
-            print("Regresando al menu de inicio....\n")
+            pass
+        elif n==7:
+            print("\nRegresando al menu de inicio....\n")
         else:
             print("\nelija opcion entre 1-6")
 

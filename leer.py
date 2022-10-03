@@ -1,6 +1,5 @@
 import xml.etree.ElementTree as ET
 from cliente import Cliente
-#varias cosas
 from empresa import Empresa
 from lista_doble import doubleList
 lista_empresas=doubleList()
@@ -25,6 +24,7 @@ class leer:
                 empresa.iniciar_puntos_atencion()
                 empresa.iniciar_transacciones()        
                 lista_empresas.append(empresa)
+            print("\n!!!Archivo leido correctamente!!!\n")
 
 
         except FileNotFoundError:
@@ -57,27 +57,33 @@ class leer:
                         if lista_escri.obtener_escritorio(codes)!=None:
                             escritorito=lista_escri.obtener_escritorio(codes)
                             escritorito.set_activo()
-    
                         else:
-                            print("Escitorio no existe")     
+                            print("Escitorio no existe")                    
                 else:
                     print("Id de Punto de atencion no existe")                 
             else:
                 print("Id de Empresa no existe")     
    
             
-
+            list_transac=emp.lista_transacciones
             #iniciamos clientes
             for cliente in clientes:
+                tiempo_total=0
                 cui=cliente.attrib['dpi']
                 for subelem in cliente:
                     if subelem.tag=="nombre":
                         nom=subelem.text
                     elif subelem.tag=="listadoTransacciones":
                         trans=subelem
-                cli=Cliente(cui,nom,trans)
-                lista_clientes.append(cli)
+                for tran in trans:
+                    id_tran=tran.attrib['idTransaccion']
+                    transa=list_transac.obtener_transaccion(id_tran)
+                    tiempo=int(transa.tiempo)
+                    tiempo_total+=tiempo
 
+                cli=Cliente(cui,nom,trans,tiempo_total)
+                lista_clientes.append(cli)
+            print("\n!!!Archivo leido correctamente!!!\n") 
         except FileNotFoundError:
             print("")
             print("!!!!!Archivo inexistente!!!!")

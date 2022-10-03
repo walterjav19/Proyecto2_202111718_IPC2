@@ -28,7 +28,7 @@
         <listaTransacciones>
             <transaccion id="$codigoTransaccion">
                 <nombre> $nombreTransaccion </nombre>
-                <tiempoAtencion> minutosAtencion </tiempoAtencion>
+                <tiempoAtencion> 5 </tiempoAtencion>
             </transaccion>
         </listaTransacciones>
     </empresa>
@@ -54,7 +54,7 @@
         <listaTransacciones>
             <transaccion id="$codigoTransaccion2">
                 <nombre> $nombreTransaccion2 </nombre>
-                <tiempoAtencion> minutosAtencion2 </tiempoAtencion>
+                <tiempoAtencion> 4 </tiempoAtencion>
             </transaccion>
         </listaTransacciones>
     </empresa>    
