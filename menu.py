@@ -133,10 +133,20 @@ def manejo_puntos_atencion():
         if n==1:
             if pto_obj!=None:
                 lista_escri=pto_obj.lista_objetos_escritorios
-                print("======Estado del punto de Atencion======")
+                print("\n======Estado del punto de Atencion======")
                 print("Escritorios Activos: "+str(lista_escri.contar_escritorios_activos()))
                 print("Escritorios Inactivos: "+str(lista_escri.contar_escritorios_desactivados()))
-                print("Clientes en Espera: "+str(lista_clientes.contar_elementos()))
+                if lista_clientes.lista_vacia()==True:
+                    print("\nNo hay clientes en espera")
+                else:    
+                    print("Clientes en Espera: "+str(lista_clientes.contar_elementos()))
+                    print("Tiempo Promedio de Espera: "+str(lista_clientes.tiempo_medio_espera())+" Minutos")
+                    print("Tiempo Maximo de Espera: "+str(lista_clientes.tiempo_maximo_espera())+" Minutos")
+                    print("Tiempo Minimo de Espera: "+str(lista_clientes.tiempo_minimo_espera())+" Minutos")
+                    print("Tiempo Promedio de atencion: "+str(lista_clientes.tiempo_medio_atencion())+" Minutos")
+                    print("Tiempo Maximo de atencion: "+str(lista_clientes.tiempo_maximo_atencion())+" Minutos")
+                    print("Tiempo Minimo de atencion: "+str(lista_clientes.tiempo_minimo_atencion())+" Minutos\n")
+                #lista_escri.imprimir_lista_escritorios()
             else:
                 print("\nAun no se ha elegido un punto de atencion")    
         elif n==2:
@@ -160,7 +170,9 @@ def manejo_puntos_atencion():
             else:
                 print("\nAun no se ha elegido un punto de atencion")        
         elif n==4:
-            pass
+            print("\nEl primer cliente en la cola fue atendido ")
+            lista_clientes.eliminar_inicio()
+            #lista_clientes.imprimir_lista_clientes()            
         elif n==5:
             list_tran=emp.lista_transacciones
             t_t=0
@@ -178,11 +190,17 @@ def manejo_puntos_atencion():
                 else:
                     print("\nEsta empresa no reconoce el id de esta transaccion\n") 
             nuevo_cliente=Cliente(dpi,nombre,None,t_t)
+            nuevo_cliente.set_tiempo_espera(lista_clientes.sumar_tiempos_atencion())  
             lista_clientes.append(nuevo_cliente)
+            print("\nTiempo promedio de espera: "+str(lista_clientes.tiempo_medio_espera())+" Minutos\n")
             #lista_clientes.imprimir_lista_clientes()
-            print("\nTiempo promedio de espera: "+str(lista_clientes.sumar_tiempos_atencion()/lista_clientes.contar_elementos())+" Minutos\n")  
+            
         elif n==6:
-            pass
+            atendidos=0
+            for i in range(lista_clientes.contar_elementos()):
+                atendidos+=1
+                lista_clientes.eliminar_inicio()
+            print("\nEl total de clientes atendidos fue :"+str(atendidos))
         elif n==7:
             print("\nRegresando al menu de inicio....\n")
         else:

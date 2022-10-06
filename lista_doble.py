@@ -133,6 +133,92 @@ class doubleList:
                 i+=apuntador.elemento.tiempo_atencion
                 apuntador = apuntador.siguiente
             return i
+#tiempos de espera
+    def tiempo_medio_espera(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            i=0
+            apuntador = self.root
+            while apuntador is not None:
+                i+=apuntador.elemento.tiempo_espera
+                apuntador = apuntador.siguiente
+            return i/self.contar_elementos()        
+
+    def tiempo_minimo_espera(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            minimo=apuntador.elemento.tiempo_espera
+            while apuntador is not None:
+                if apuntador.elemento.tiempo_espera<minimo:
+                    minimo=apuntador.elemento.tiempo_espera
+                apuntador = apuntador.siguiente
+            return minimo    
+
+
+
+    def tiempo_maximo_espera(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            maximo=apuntador.elemento.tiempo_espera
+            while apuntador is not None:
+                if apuntador.elemento.tiempo_espera>maximo:
+                    maximo=apuntador.elemento.tiempo_espera
+                apuntador = apuntador.siguiente
+            return maximo    
+#fin tiempos de espera
+
+    def tiempo_medio_atencion(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            i=0
+            apuntador = self.root
+            while apuntador is not None:
+                i+=apuntador.elemento.tiempo_atencion
+                apuntador = apuntador.siguiente
+            return i/self.contar_elementos()        
+
+    def tiempo_minimo_atencion(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            minimo=apuntador.elemento.tiempo_atencion
+            while apuntador is not None:
+                if apuntador.elemento.tiempo_atencion<minimo:
+                    minimo=apuntador.elemento.tiempo_atencion
+                apuntador = apuntador.siguiente
+            return minimo    
+
+
+
+    def tiempo_maximo_atencion(self):
+        if self.root is None:
+            print("La lista esta vacia")
+            return
+        else:
+            apuntador = self.root
+            maximo=apuntador.elemento.tiempo_atencion
+            while apuntador is not None:
+                if apuntador.elemento.tiempo_atencion>maximo:
+                    maximo=apuntador.elemento.tiempo_atencion
+                apuntador = apuntador.siguiente
+            return maximo    
+
+
+
+
+
 
     def imprimir_lista_empresas(self):
         if self.root is None:
@@ -196,9 +282,9 @@ class doubleList:
         
         if self.root.siguiente is None:
             self.root = None
-
-        self.root = self.root.siguiente
-        self.root.anterior = None
+        else:
+            self.root = self.root.siguiente
+            self.root.anterior = None
 
 
     def eliminar_final(self):

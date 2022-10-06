@@ -12,6 +12,20 @@
                     <transaccion idTransaccion="$codigoTransaccion" cantidad="cantTrans"/>
                 </listadoTransacciones>
                 </cliente>
+                    <cliente dpi="$DPI2">
+                    <nombre> $nombreCliente2 </nombre>
+                <listadoTransacciones>
+                    <transaccion idTransaccion="$codigoTransaccion" cantidad="cantTrans"/>
+                    <transaccion idTransaccion="$codigoTransaccion" cantidad="cantTrans"/>
+                </listadoTransacciones>
+                </cliente>
+                    <cliente dpi="$DPI3">
+                    <nombre> $nombreCliente3 </nombre>
+                <listadoTransacciones>
+                    <transaccion idTransaccion="$codigoTransaccion" cantidad="cantTrans"/>
+                    <transaccion idTransaccion="$codigoTransaccion" cantidad="cantTrans"/>
+                </listadoTransacciones>
+                </cliente>
             </listadoClientes>
         </configInicial>
     </listadoInicial>
