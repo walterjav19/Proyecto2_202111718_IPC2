@@ -67,6 +67,7 @@ class leer:
             
             list_transac=emp.lista_transacciones
             #iniciamos clientes
+            tiempo_espera=0
             for cliente in clientes:
                 tiempo_total=0
                 cui=cliente.attrib['dpi']
@@ -82,6 +83,9 @@ class leer:
                     tiempo_total+=tiempo
 
                 cli=Cliente(cui,nom,trans,tiempo_total)
+                cli.set_tiempo_espera(tiempo_espera)
+                #print(cli.toString())
+                tiempo_espera+=tiempo_total
                 lista_clientes.append(cli)
             print("\n!!!Archivo leido correctamente!!!\n") 
         except FileNotFoundError:
