@@ -93,5 +93,5 @@ class leer:
             print("!!!!!Archivo inexistente!!!!")
             print("")
             
-leer.leer_xml_empresas("sistema.xml")
-leer.leer_xml_config("configsistema.xml")
+#leer.leer_xml_empresas("sistema.xml")
+#leer.leer_xml_config("configsistema.xml")
